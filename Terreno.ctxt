@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Terreno
+comment1.params=
+comment1.target=int\ getEstrato()
+comment2.params=estrato
+comment2.target=void\ setEstrato(int)
+comment3.params=
+comment3.target=double\ getArea()
+comment4.params=
+comment4.target=double\ getValorTotal()
+comment5.params=
+comment5.target=double\ calcularValorTotal()
+numComments=6
