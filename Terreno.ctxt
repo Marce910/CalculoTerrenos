@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=double\ getValorTotal()
 comment5.params=
 comment5.target=double\ calcularValorTotal()
-numComments=6
+comment6.params=
+comment6.target=double\ calcularArea()
+numComments=7

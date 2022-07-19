@@ -1,18 +1,27 @@
 import javax.swing.JOptionPane;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
-public class ArranqueOpc2
+public class Arranque
 {
     public static void main(String [] args)
     {
         DecimalFormat formato = new DecimalFormat("#,###.##");
         int opcion;
+        ArrayList<Terreno> listaTerrenos = new ArrayList<Terreno>();
+        
         do
         {
-            opcion = Integer.parseInt(JOptionPane.showInputDialog(null, "Escoja tipo de terreno\n1. Rectangular\n2. Trapezoidal\n3. Triangular\n0. Salir"));
+            String mensajeMenu = "MENU PRINCIPAL \n"+
+                                 "1. Ingresar Terreno Rectangular\n"+ 
+                                 "2. Ingresar Terreno Trapezoidal\n"+
+                                 "3. Ingrese Terreno Triangular\n"+
+                                 "4. Mostrar cantidad de terrenos\n"+
+                                 "0. Salir";
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null, mensajeMenu));
             double ancho;
             int estrato;
-    
+            Terreno t;
             switch(opcion)
             {
                 case 1:
@@ -20,8 +29,9 @@ public class ArranqueOpc2
                     ancho = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese ancho del terreno rectangular"));
                     estrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese estrato del terreno rectangular"));
     
-                    TerrenoRectangular t = new TerrenoRectangular(largo, ancho, estrato);
+                    t = new TerrenoRectangular(largo, ancho, estrato);
                     JOptionPane.showMessageDialog(null, "El área del terreno rectangular es: "+t.calcularArea()+ "\nEl valor del terreno rectangular es: $"+formato.format(t.calcularValorTotal())); 
+                    listaTerrenos.add(t);
                     break;
     
                 case 2:
@@ -30,8 +40,9 @@ public class ArranqueOpc2
                     ancho = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese ancho del terreno trapezoidal"));
                     estrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese estrato del terreno trapezoidal"));
     
-                    TerrenoTrapezoidal j = new TerrenoTrapezoidal(largoMayor, largoMenor, ancho, estrato);     
-                    JOptionPane.showMessageDialog(null, "El área del terreno trapezoidal es: "+j.calcularArea()+ "\nEl valor del terreno trapezoidal es: $"+formato.format(j.calcularValorTotal()));  
+                    t = new TerrenoTrapezoidal(largoMayor, largoMenor, ancho, estrato);     
+                    JOptionPane.showMessageDialog(null, "El área del terreno trapezoidal es: "+t.calcularArea()+ "\nEl valor del terreno trapezoidal es: $"+formato.format(t.calcularValorTotal()));  
+                    listaTerrenos.add(t);
                     break;
     
                 case 3:
@@ -40,9 +51,13 @@ public class ArranqueOpc2
                     double ladoc = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese lado c del terreno triangular"));
                     estrato = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese estrato del terreno triangular"));
     
-                    TerrenoTriangular s = new TerrenoTriangular(ladoa, ladob, ladoc, estrato);      
-                    JOptionPane.showMessageDialog(null, "El área del terreno triangular es: "+s.calcularArea()+ "\nEl valor del terreno triangular es: $"+formato.format(s.calcularValorTotal()));           
+                    t = new TerrenoTriangular(ladoa, ladob, ladoc, estrato);      
+                    JOptionPane.showMessageDialog(null, "El área del terreno triangular es: "+t.calcularArea()+ "\nEl valor del terreno triangular es: $"+formato.format(t.calcularValorTotal()));           
+                    listaTerrenos.add(t);
                     break;
+                    
+                case 4:
+                    JOptionPane.showMessageDialog(null, "Cantidad de terrenos ingresados: "+listaTerrenos.size());
                     
                 case 0:
                     JOptionPane.showMessageDialog(null, "Gracias");
@@ -52,6 +67,6 @@ public class ArranqueOpc2
                     JOptionPane.showMessageDialog(null, "la opción es incorrecta");
             }
         }
-        while(opcion != 0);
+        while(opcion != 4);
     }
 }
